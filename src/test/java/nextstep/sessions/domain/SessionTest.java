@@ -1,6 +1,7 @@
 package nextstep.sessions.domain;
 
 import nextstep.sessions.Image.CoverImage;
+import nextstep.sessions.Image.CoverImages;
 import nextstep.sessions.Session;
 import nextstep.sessions.Session.SessionBuilder;
 import nextstep.sessions.SessionState;
@@ -22,7 +23,13 @@ public class SessionTest {
 
     @BeforeEach
     public void setUp() {
-        session = new SessionBuilder(1L, "테스트세션", "테스트 강의", null, LocalDateTime.parse("2024-01-01T00:00:00"), LocalDateTime.parse("2024-01-02T00:00:00"))
+        session = new SessionBuilder(
+                1L,
+                "테스트세션",
+                "테스트 강의",
+                (CoverImages) null,
+                LocalDateTime.parse("2024-01-01T00:00:00"),
+                LocalDateTime.parse("2024-01-02T00:00:00"))
                 .isFree(false)
                 .maxStudentCount(50)
                 .sessionFee(10000L)
@@ -48,9 +55,15 @@ public class SessionTest {
     }
 
     @Test
+    @DisplayName("강의가 모집 중인지 확인")
+    public void 강의_모집_여부_확인() {
+        assertThat(session.isRecruiting()).isTrue();
+    }
+
+    @Test
     @DisplayName("세션 상태가 닫힘 상태일 때 등록에 실패하는지 확인")
     public void 강의_등록_실패_접수_기간_아님() {
-        session = new SessionBuilder(2L, "테스트세션", "테스트 강의", null, LocalDateTime.parse("2024-01-01T00:00:00"), LocalDateTime.parse("2024-01-02T00:00:00"))
+        session = new SessionBuilder(2L, "테스트세션", "테스트 강의", (CoverImages) null, LocalDateTime.parse("2024-01-01T00:00:00"), LocalDateTime.parse("2024-01-02T00:00:00"))
                 .state(SessionState.CLOSE)
                 .build();
 
@@ -62,7 +75,7 @@ public class SessionTest {
     @Test
     @DisplayName("유료 세션 설정 확인")
     public void 유료_강의_설정() {
-        Session paidSession = new SessionBuilder(3L, "유료세션", "유료 강의", null, LocalDateTime.parse("2024-06-01T00:00:00"), LocalDateTime.parse("2024-06-10T00:00:00"))
+        Session paidSession = new SessionBuilder(3L, "유료세션", "유료 강의", (CoverImages) null, LocalDateTime.parse("2024-06-01T00:00:00"), LocalDateTime.parse("2024-06-10T00:00:00"))
                 .isFree(false)
                 .sessionFee(50000L)
                 .build();
@@ -73,7 +86,7 @@ public class SessionTest {
     @Test
     @DisplayName("무료 세션 설정 확인")
     public void 무료_강의_설정() {
-        Session freeSession = new SessionBuilder(4L, "무료세션", "무료 강의", null, LocalDateTime.parse("2024-06-01T00:00:00"), LocalDateTime.parse("2024-06-10T00:00:00"))
+        Session freeSession = new SessionBuilder(4L, "무료세션", "무료 강의", (CoverImages) null, LocalDateTime.parse("2024-06-01T00:00:00"), LocalDateTime.parse("2024-06-10T00:00:00"))
                 .isFree(true)
                 .build();
 

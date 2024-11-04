@@ -4,6 +4,7 @@ import nextstep.courses.domain.Course;
 import nextstep.courses.domain.CourseRepository;
 import nextstep.payments.domain.Payment;
 import nextstep.payments.service.PaymentService;
+import nextstep.sessions.Image.CoverImages;
 import nextstep.sessions.Session;
 import nextstep.sessions.SessionState;
 import nextstep.users.domain.Student;
@@ -47,7 +48,7 @@ public class CourseServiceTest {
                 1L,
                 "자바지기 1주차",
                 "자바지기 1주차 내용",
-                null,
+                (CoverImages) null,
                 LocalDateTime.now().plusDays(1),
                 LocalDateTime.now().plusDays(2)
         ).state(SessionState.IN_PROGRESS)

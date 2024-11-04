@@ -1,5 +1,6 @@
 package nextstep.sessions.domain;
 
+import nextstep.sessions.Image.CoverImages;
 import nextstep.sessions.Session;
 import nextstep.sessions.SessionDetail;
 import nextstep.sessions.Sessions;
@@ -21,8 +22,8 @@ public class SessionsTest {
 
     @BeforeEach
     public void setUp() {
-        session1 = new Session.SessionBuilder(1L, "테스트세션1", "테스트 강의1", null, LocalDate.parse("2024-01-01").atStartOfDay(), LocalDate.parse("2024-01-02").atStartOfDay()).build();
-        session2 = new Session.SessionBuilder(2L, "테스트세션2", "테스트 강의2", null, LocalDate.parse("2024-01-01").atStartOfDay(), LocalDate.parse("2024-01-02").atStartOfDay()).build();
+        session1 = new Session.SessionBuilder(1L, "테스트세션1", "테스트 강의1", (CoverImages) null, LocalDate.parse("2024-01-01").atStartOfDay(), LocalDate.parse("2024-01-02").atStartOfDay()).build();
+        session2 = new Session.SessionBuilder(2L, "테스트세션2", "테스트 강의2", (CoverImages) null, LocalDate.parse("2024-01-01").atStartOfDay(), LocalDate.parse("2024-01-02").atStartOfDay()).build();
         sessions = new Sessions(new ArrayList<>(List.of(session1)));
     }
 

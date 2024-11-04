@@ -1,5 +1,6 @@
 package nextstep.users.domain;
 
+import nextstep.sessions.Image.CoverImages;
 import nextstep.sessions.Session;
 import nextstep.users.domain.Student;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,12 +18,12 @@ public class StudentTest {
     @BeforeEach
     void setup() {
         student = new Student(1L, "user123", "password", "John Doe", "john@example.com", LocalDateTime.now(), LocalDateTime.now());
-        session1 = new Session.SessionBuilder(1L, "test1", "test", null, LocalDateTime.now(), LocalDateTime.now())
+        session1 = new Session.SessionBuilder(1L, "test1", "test", (CoverImages) null, LocalDateTime.now(), LocalDateTime.now())
                 .isFree(true)
                 .maxStudentCount(100)
                 .sessionFee(100L)
                 .build();
-        session2 = new Session.SessionBuilder(2L, "test1", "test", null, LocalDateTime.now(), LocalDateTime.now())
+        session2 = new Session.SessionBuilder(2L, "test1", "test", (CoverImages) null, LocalDateTime.now(), LocalDateTime.now())
                 .isFree(true)
                 .maxStudentCount(100)
                 .sessionFee(100L)

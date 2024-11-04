@@ -11,7 +11,7 @@ public class SessionRecruitmentStateTest {
     @Test
     @DisplayName("모집 상태가 true인 경우 isRecruiting이 true를 반환한다")
     void isRecruiting_withRecruitingTrue() {
-        SessionRecruitmentState recruitmentState = new SessionRecruitmentState(true);
+        SessionRecruitmentState recruitmentState = SessionRecruitmentState.RECRUITING;
 
         assertThat(recruitmentState.isRecruiting()).isTrue();
     }
@@ -19,7 +19,7 @@ public class SessionRecruitmentStateTest {
     @Test
     @DisplayName("모집 상태가 false인 경우 isRecruiting이 false를 반환한다")
     void isRecruiting_withRecruitingFalse() {
-        SessionRecruitmentState recruitmentState = new SessionRecruitmentState(false);
+        SessionRecruitmentState recruitmentState = SessionRecruitmentState.NOT_RECRUITING;
 
         assertThat(recruitmentState.isRecruiting()).isFalse();
     }

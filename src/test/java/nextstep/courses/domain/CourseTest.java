@@ -1,7 +1,10 @@
 package nextstep.courses.domain;
 
 import nextstep.payments.domain.Payment;
+import nextstep.sessions.Image.CoverImage;
+import nextstep.sessions.Image.CoverImages;
 import nextstep.sessions.Session;
+import nextstep.sessions.SessionRecruitmentState;
 import nextstep.sessions.SessionState;
 import nextstep.users.domain.Student;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,23 +29,25 @@ public class CourseTest {
                 1L,
                 "자바지기 1주차",
                 "자바지기 1주차 내용",
-                null,
+                (CoverImages) null,
                 LocalDateTime.now().plusDays(1),
                 LocalDateTime.now().plusDays(2)
         ).state(SessionState.IN_PROGRESS)
                 .isFree(false)
                 .maxStudentCount(30)
                 .sessionFee(10000L)
+                .recruitmentState(SessionRecruitmentState.RECRUITING)
                 .build();
 
         freeSession = new Session.SessionBuilder(
                 3L,
                 "자바지기 무료 세션",
                 "무료 세션 내용",
-                null,
+                (CoverImage) null,
                 LocalDateTime.now().plusDays(1),
                 LocalDateTime.now().plusDays(2)
         ).state(SessionState.IN_PROGRESS)
+                .recruitmentState(SessionRecruitmentState.RECRUITING)
                 .isFree(true)
                 .build();
 
