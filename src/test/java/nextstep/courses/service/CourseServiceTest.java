@@ -50,7 +50,7 @@ public class CourseServiceTest {
                 null,
                 LocalDateTime.now().plusDays(1),
                 LocalDateTime.now().plusDays(2)
-        ).state(SessionState.OPEN)
+        ).state(SessionState.IN_PROGRESS)
                 .isFree(false)
                 .maxStudentCount(30)
                 .sessionFee(10000L)

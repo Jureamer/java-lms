@@ -15,6 +15,7 @@ public class Session {
     private final String name;
     private final String description;
     private SessionState state;
+    private SessionRecruitmentState recruitmentState;
     private final CoverImage image;
 
     private final SessionDetail sessionDetail;
@@ -60,7 +61,7 @@ public class Session {
     }
 
     private void validateRegistrationEligibility(Long amount) {
-        if (!state.isOpen()) {
+        if (!state.isInProgress()) {
             throw new IllegalStateException(SESSION_NOT_OPEN_MESSAGE);
         }
 

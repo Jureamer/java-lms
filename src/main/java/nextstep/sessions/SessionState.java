@@ -1,8 +1,8 @@
 package nextstep.sessions;
 
 public enum SessionState {
-    READY, OPEN, CLOSE;
-    public boolean isOpen() {
-        return this == OPEN;
+    READY, IN_PROGRESS, CLOSE;
+    public boolean isInProgress() {
+        return this == IN_PROGRESS;
     }
 }

@@ -11,23 +11,23 @@ public class SessionStateTest {
     public void 세션상태_READY_테스트() {
         SessionState state = SessionState.READY;
 
-        assertThat(state.isOpen()).isFalse();
+        assertThat(state.isInProgress()).isFalse();
         assertThat(state).isEqualTo(SessionState.READY);
     }
 
     @Test
     public void 세션상태_OPEN_테스트() {
-        SessionState state = SessionState.OPEN;
+        SessionState state = SessionState.IN_PROGRESS;
 
-        assertThat(state.isOpen()).isTrue();
-        assertThat(state).isEqualTo(SessionState.OPEN);
+        assertThat(state.isInProgress()).isTrue();
+        assertThat(state).isEqualTo(SessionState.IN_PROGRESS);
     }
 
     @Test
     public void 세션상태_CLOSE_테스트() {
         SessionState state = SessionState.CLOSE;
 
-        assertThat(state.isOpen()).isFalse();
+        assertThat(state.isInProgress()).isFalse();
         assertThat(state).isEqualTo(SessionState.CLOSE);
     }
 }
